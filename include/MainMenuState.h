@@ -1,0 +1,21 @@
+#pragma once
+
+#include "GameState.h"
+#include "StartState.h"
+#include "Canvas.h"
+
+class MainMenuState : public GameState {
+
+public:
+	MainMenuState();
+	~MainMenuState();
+	void Enter() override;
+	GameState* HandleInput(SDL_Event& e) override;
+	GameState* ChangeState() override;
+	void Update() override;
+	void Render() override;
+
+private:
+	Canvas m_canvas;
+
+};

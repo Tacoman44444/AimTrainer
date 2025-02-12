@@ -32,6 +32,10 @@ int main(int argc, char *argv[])
 		std::cout << "SDL initialization failed" << std::endl;
 		return 1;
 	}
+	if (!SetupHelper::InitializeSDLMixer()) {
+		std::cout << "Mixer initialization failed" << std::endl;
+		return 1;
+	}
 	SDL_Window* window;
 	SetupHelper::CreateSDLWindow(&window);
 	SDL_GLContext glContext;

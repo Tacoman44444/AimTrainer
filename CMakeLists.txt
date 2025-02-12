@@ -39,13 +39,40 @@ add_subdirectory(thirdparty/imgui-docking)		#ui
 add_subdirectory(thirdparty/gl2d)			#rendering
 add_subdirectory(thirdparty/freetype)  #font loading
 
+add_executable("${CMAKE_PROJECT_NAME}")
+
+# Set paths explicitly
+set(SDL2_MIXER_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/thirdparty/SDL2_mixer/include")
+set(SDL2_MIXER_LIB "${CMAKE_SOURCE_DIR}/thirdparty/SDL2_mixer/lib/SDL2_mixer.lib") # Windows
+#set(SDL2_MIXER_LIB "${CMAKE_SOURCE_DIR}/thirdparty/SDL2_mixer/lib/libSDL2_mixer.a") # Linux/macOS
+
+# Debugging output
+message(STATUS "SDL2_mixer include: ${SDL2_MIXER_INCLUDE_DIR}")
+message(STATUS "SDL2_mixer lib: ${SDL2_MIXER_LIB}")
+
+# Check if library exists
+if(NOT EXISTS "${SDL2_MIXER_LIB}")
+    message(FATAL_ERROR "SDL2_mixer library not found at ${SDL2_MIXER_LIB}")
+endif()
+
+# Define SDL2_mixer as an imported library
+add_library(SDL2_mixer STATIC IMPORTED)
+set_target_properties(SDL2_mixer PROPERTIES
+    IMPORTED_LOCATION "${SDL2_MIXER_LIB}"
+    INTERFACE_INCLUDE_DIRECTORIES "${SDL2_MIXER_INCLUDE_DIR}"
+)
+
+# Add SDL2_mixer to the executable
+target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE SDL2_mixer)
+
+
 
 # MY_SOURCES is defined to be a list of all the source files for my game 
 # DON'T ADD THE SOURCES BY HAND, they are already added with this macro
 file(GLOB_RECURSE MY_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 
 
-add_executable("${CMAKE_PROJECT_NAME}")
+
 
 set_property(TARGET "${CMAKE_PROJECT_NAME}" PROPERTY CXX_STANDARD 17)
 
@@ -90,5 +117,3 @@ target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURC
 #enet not working yet on linux for some reason
 target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE glm 
 	glad stb_image stb_truetype gl2d freetype imgui SDL2-static)
-
-

@@ -10,7 +10,9 @@ PlayState::~PlayState() {
 
 void PlayState::Enter() {
 	startTime = SDL_GetTicks();
+	soundManager.InitializeSounds();
 	world->TargetShot().AddObserver(&scoreManager);
+	world->TargetShot().AddObserver(&soundManager);
 	canvas.AddTextBox("--", 50.0f, 550.0f, 0.9f, glm::vec3(0.3f, 0.5f, 0.1f), "TIMER");
 	canvas.AddTextBox("0", 50.0f, 510.0f, 0.9f, glm::vec3(0.3f, 0.5f, 0.1f), "SCORE");
 }

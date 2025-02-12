@@ -8,6 +8,7 @@
 #include "Transform.h"
 #include "World.h"
 #include "ScoreManager.h"
+#include "SoundManager.h"
 #include "Canvas.h"
 
 class PlayState : public GameState {
@@ -29,5 +30,6 @@ private:
 	std::unique_ptr<World> world;
 	Uint32 startTime;
 	ScoreManager scoreManager;
+	SoundManager soundManager;
 	Canvas canvas;
 };

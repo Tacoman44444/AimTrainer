@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SDL2/SDL.h>
+#include <SDL_mixer.h>
 #include <glad/glad.h>
 #include "Shader.h"
 #include "Texture.h"
@@ -21,6 +22,15 @@ namespace SetupHelper {
 		}
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);		
+		return true;
+	}
+
+	inline bool InitializeSDLMixer() {
+		if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+		{
+			printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+			return false;
+		}
 		return true;
 	}
 

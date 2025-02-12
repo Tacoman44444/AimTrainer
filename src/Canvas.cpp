@@ -1,12 +1,21 @@
 #include "Canvas.h"
 
-Canvas::Canvas() : m_textShader(RESOURCES_PATH "shaders/text_vert_shader.vert", RESOURCES_PATH "shaders/text_frag_shader.frag") {
+Canvas::Canvas() : 
+	m_textShader(RESOURCES_PATH "shaders/text_vert_shader.vert", RESOURCES_PATH "shaders/text_frag_shader.frag"),  
+	m_uiShader(RESOURCES_PATH "shaders/ui_vert_shader.vert", RESOURCES_PATH "shaders/ui_frag_shader.frag"),
+	TEMP_TEXTURE(RESOURCES_PATH "media/wawdspfp.jpg")
+{
 
 }
 void Canvas::AddTextBox(std::string text, float x, float y, float scale, glm::vec3 colour, std::string id) {
 	std::unique_ptr<Text> textBox = std::make_unique<Text>(text, m_textShader, x, y, scale, colour);
 	textBox->InitializeBuffers();
 	m_textObjectsMap.insert(std::pair(id, std::move(textBox)));
+}
+
+void Canvas::AddUIBox(float x, float y, float rotation, float scaleX, float scaleY, std::string id) {
+	std::unique_ptr<UI> uiBox = std::make_unique<UI>(x, y, rotation, scaleX, scaleY, m_uiShader, m_ui_vaoID, TEMP_TEXTURE);
+	m_uiObjectsMap.insert(std::pair(id, std::move(uiBox)));
 }
 
 void Canvas::UpdateTextString(std::string text, std::string id) {
@@ -17,6 +26,9 @@ void Canvas::Render() {
 	for (const auto& [key, value] : m_textObjectsMap) {
 		value->RenderText(glm::ortho(0.0f, 800.0f, 0.0f, 600.0f));
 	}
+	for (const auto& [key, value] : m_uiObjectsMap) {
+		value->Render();
+	}
 }
 
 void Canvas::InitializeUIBuffers() {
@@ -25,7 +37,7 @@ void Canvas::InitializeUIBuffers() {
 	glBindVertexArray(m_ui_vaoID);
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_ui_vboID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 6, Models::ui_vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Models::ui_vertices), Models::ui_vertices, GL_STATIC_DRAW);
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);

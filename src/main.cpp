@@ -80,6 +80,12 @@ int main(int argc, char *argv[])
 			if (e.type == SDL_QUIT) {
 				quit = true;
 			}
+			else if (e.type == SDL_WINDOWEVENT) {
+				resize_gl_viewport(e);
+				if (e.window.event == SDL_WINDOWEVENT_FOCUS_GAINED) {
+					SDL_SetRelativeMouseMode(SDL_TRUE);
+				}
+			}
 			else {
 				stateManager.HandleInput(e);
 			}

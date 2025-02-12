@@ -5,15 +5,16 @@
 
 class UI {
 public:
-	UI(float x, float y, float rotation, float scale, Shader& shader, GLuint vaoID, std::shared_ptr<Texture> texturePtr);
+	UI(float x, float y, float rotation, float scaleX, float scaleY, Shader& shader, GLuint vaoID, Texture& texture);
 	void OnClick();
 	void Render();
 private:
 	Shader m_shader;
 	GLuint m_vaoID;
-	std::shared_ptr<Texture> m_texture;
+	Texture m_texture;
 	float x;
 	float y;
-	float scale;
+	float scaleX;
+	float scaleY;
 	float rotation;
 };

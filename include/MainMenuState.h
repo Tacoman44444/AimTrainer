@@ -5,6 +5,7 @@
 #include "Canvas.h"
 #include "MMButtonManager.h"
 #include "Cursor.h"
+#include "BoxCollider2D_test.h"
 
 class MainMenuState : public GameState {
 

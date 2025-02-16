@@ -4,7 +4,7 @@ UI::UI(float x, float y, float rotation, float scaleX, float scaleY, Shader& sha
 	//be sure to cast mousepos to float
 	m_shader(shader),
 	m_texture(texturePtr),
-	m_collider(0, 0, 0, 0){
+	m_collider(-0.5f * scaleX * 100 + x, -0.5f * scaleY * 100 + y, 0.5f * scaleX * 100 + x, 0.5f * scaleY * 100 + y){
 	this->x = x;
 	this->y = y;
 	this->rotation = rotation;

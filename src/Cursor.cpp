@@ -22,7 +22,7 @@ void Cursor::Initialize() {
 }
 
 void Cursor::UpdatePosition(float x, float y) {
-	std::cout << "(" << x << ", " << y << ")" << std::endl;
+	//std::cout << "(" << x << ", " << y << ")" << std::endl;
 	model = glm::mat4(1.0f);
 	model = glm::translate(model, glm::vec3(x, y, 0.0f));
 	model = glm::scale(model, glm::vec3(1000.0f, 1000.0f, 1.0f));

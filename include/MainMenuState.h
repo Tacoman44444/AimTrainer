@@ -3,6 +3,8 @@
 #include "GameState.h"
 #include "StartState.h"
 #include "Canvas.h"
+#include "MMButtonManager.h"
+#include "Cursor.h"
 
 class MainMenuState : public GameState {
 
@@ -17,5 +19,6 @@ public:
 
 private:
 	Canvas m_canvas;
-
+	MMButtonManager m_MMButtonManager;
+	Cursor m_cursor;
 };

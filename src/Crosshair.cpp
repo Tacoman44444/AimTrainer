@@ -21,7 +21,6 @@ void Crosshair::Initialize() {
 	glm::mat4 projection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f);
 	m_shader->setMat("projection", glm::value_ptr(projection));
 	
-
 }
 
 void Crosshair::Render() {

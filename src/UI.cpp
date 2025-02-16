@@ -1,6 +1,10 @@
 #include "UI.h"
 
-UI::UI(float x, float y, float rotation, float scaleX, float scaleY, Shader& shader, GLuint vaoID, Texture& texturePtr) : m_shader(shader), m_texture(texturePtr){
+UI::UI(float x, float y, float rotation, float scaleX, float scaleY, Shader& shader, GLuint vaoID, Texture& texturePtr) : 
+	//be sure to cast mousepos to float
+	m_shader(shader),
+	m_texture(texturePtr),
+	m_collider(0, 0, 0, 0){
 	this->x = x;
 	this->y = y;
 	this->rotation = rotation;
@@ -10,8 +14,8 @@ UI::UI(float x, float y, float rotation, float scaleX, float scaleY, Shader& sha
 	
 }
 
-void UI::OnClick() {
-
+bool UI::CheckCollision(float mousePosX, float mousePosY) {
+	return m_collider.CheckCollision(mousePosX, mousePosY);
 }
 
 void UI::Render() {

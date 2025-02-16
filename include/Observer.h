@@ -1,7 +1,8 @@
 #pragma once
 
 enum Event {
-	TARGET_SHOT
+	TARGET_SHOT,
+	BUTTON_CLICKED
 };
 
 class Observer {

@@ -22,6 +22,19 @@ void Canvas::UpdateTextString(std::string text, std::string id) {
 	m_textObjectsMap[id]->UpdateString(text);
 }
 
+void Canvas::HandleInput(SDL_Event& e) {
+	if (e.type == SDL_MOUSEBUTTONDOWN) {
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+		for (const auto& [key, value] : m_uiObjectsMap) {
+			if (value->CheckCollision(float(x), float(y))) {
+				m_onClickEvent.Notify(key);
+			}
+		}
+	}
+	
+}
+
 void Canvas::Render() {
 	for (const auto& [key, value] : m_textObjectsMap) {
 		value->RenderText(glm::ortho(0.0f, 800.0f, 0.0f, 600.0f));
@@ -29,6 +42,10 @@ void Canvas::Render() {
 	for (const auto& [key, value] : m_uiObjectsMap) {
 		value->Render();
 	}
+}
+
+void Canvas::AddListener(ButtonObserver* observer) {
+	m_onClickEvent.AddObserver(observer);
 }
 
 void Canvas::InitializeUIBuffers() {

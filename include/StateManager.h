@@ -6,12 +6,14 @@
 class StateManager {
 public:
 
+
 	StateManager(SDL_Window* window);
 	void UpdateState(GameState* newState);
 	void ChangeState();
 	void HandleInput(SDL_Event& e);
 	void Update();
 	void Render();
+	bool QuitGame();
 
 private:
 

@@ -14,7 +14,6 @@ void MainMenuState::Enter() {
 	m_canvas.AddUIBox(300.0f, 300.0f, 0.0f, 1.0f, 1.0f, "MM_PLAY_BUTTON");
 	m_canvas.AddListener(&m_MMButtonManager);
 	m_cursor.Initialize();
-	BoxCollider2D_test::CheckCollisionTrue();
 }
 
 GameState* MainMenuState::HandleInput(SDL_Event& e) {
@@ -47,4 +46,8 @@ void MainMenuState::Update() {
 void MainMenuState::Render() {
 	m_canvas.Render();
 	m_cursor.Render();
+}
+
+bool MainMenuState::QuitGame() {
+	return quitGame;
 }

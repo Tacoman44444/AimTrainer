@@ -54,14 +54,19 @@ void World::HandleInput(SDL_Event& e) {
 		camera->Look(static_cast<float>(x), static_cast<float>(y));
 	}
 	else if (e.type == SDL_MOUSEBUTTONDOWN) {
+		bool targetHit = false;
 		if (!pressedDown) {
 			for (Target* target : targets) {
 				if (target->OnMouseClick(camera->GetPosition(), camera->GetLookDirection())) {
 					targetShotEvent.Notify(TARGET_SHOT);
 					targets.push_back(target->clone());
 					target->destroy();
+					targetHit = true;
 					break;
 				}
+			}
+			if (!targetHit) {
+				targetShotEvent.Notify(TARGETS_MISSED);
 			}
 		}
 		pressedDown = true;

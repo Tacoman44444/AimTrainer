@@ -2,7 +2,7 @@
 
 enum Event {
 	TARGET_SHOT,
-	BUTTON_CLICKED
+	TARGETS_MISSED,
 };
 
 class Observer {

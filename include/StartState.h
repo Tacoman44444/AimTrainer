@@ -17,6 +17,7 @@ public:
 	GameState* ChangeState() override;
 	void Update() override;
 	void Render() override;
+	bool QuitGame() override;
 
 private:
 

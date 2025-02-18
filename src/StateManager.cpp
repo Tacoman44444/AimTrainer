@@ -35,3 +35,7 @@ void StateManager::Render() {
 	currentState->Render();
 	SDL_GL_SwapWindow(mWindow);
 }
+
+bool StateManager::QuitGame() {
+	return currentState->QuitGame();
+}

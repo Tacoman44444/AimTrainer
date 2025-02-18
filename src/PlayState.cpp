@@ -27,7 +27,9 @@ GameState* PlayState::HandleInput(SDL_Event& e) {
 
 GameState* PlayState::ChangeState() {
 	if (SDL_GetTicks() - startTime > COUNTDOWN_TIMER + PLAY_TIME) {
-		return new GameOverState();
+		//add a rounddata struct
+		RoundData::RoundStatistics stats = { scoreManager.GetScore(), scoreManager.GetMissed()};
+		return new GameOverState(stats);
 	}
 	return nullptr;
 }
@@ -49,3 +51,6 @@ void PlayState::Render() {
 	// render UI shit also
 }
 
+bool PlayState::QuitGame() {
+	return false;
+}

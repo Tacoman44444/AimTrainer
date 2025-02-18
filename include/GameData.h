@@ -69,3 +69,15 @@ namespace Models {
 
 
 }
+
+namespace RoundData {
+	struct RoundStatistics {
+		int m_score;
+		int m_misses;
+
+		RoundStatistics();
+		RoundStatistics(int score, int misses);
+	};
+
+	float Accuracy(RoundStatistics stats);
+}

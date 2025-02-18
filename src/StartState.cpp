@@ -35,3 +35,7 @@ void StartState::Render() {
 	m_canvas.Render();
 	//also render the UI elements here
 }
+
+bool StartState::QuitGame() {
+	return false;
+}

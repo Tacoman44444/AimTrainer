@@ -3,7 +3,7 @@
 Canvas::Canvas() : 
 	m_textShader(RESOURCES_PATH "shaders/text_vert_shader.vert", RESOURCES_PATH "shaders/text_frag_shader.frag"),  
 	m_uiShader(RESOURCES_PATH "shaders/ui_vert_shader.vert", RESOURCES_PATH "shaders/ui_frag_shader.frag"),
-	TEMP_TEXTURE(RESOURCES_PATH "media/wawdspfp.jpg")
+	TEMP_TEXTURE(RESOURCES_PATH "media/play_button.jpg")
 {
 
 }

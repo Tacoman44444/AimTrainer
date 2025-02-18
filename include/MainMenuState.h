@@ -17,8 +17,10 @@ public:
 	GameState* ChangeState() override;
 	void Update() override;
 	void Render() override;
+	bool QuitGame() override;
 
 private:
+	bool quitGame = false;
 	Canvas m_canvas;
 	MMButtonManager m_MMButtonManager;
 	Cursor m_cursor;

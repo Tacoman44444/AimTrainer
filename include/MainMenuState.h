@@ -6,6 +6,7 @@
 #include "MMButtonManager.h"
 #include "Cursor.h"
 #include "BoxCollider2D_test.h"
+#include "HttpHelper.h"
 
 class MainMenuState : public GameState {
 
@@ -20,10 +21,17 @@ public:
 	bool QuitGame() override;
 
 private:
+	std::string username;
+	std::string password;
 	bool quitGame = false;
+	bool enteringUsername = true;
+	bool enteringPassword = false;
 	Canvas m_canvas;
 	MMButtonManager m_MMButtonManager;
 	Cursor m_cursor;
 	Texture m_logoTexture;
 	Texture m_playButtonTexture;
+
+	void handleUsernameInput(SDL_Event& e);
+	void handlePasswordInput(SDL_Event& e);
 };

@@ -1,6 +1,6 @@
 #include "MainMenuState.h"
 
-MainMenuState::MainMenuState() {
+MainMenuState::MainMenuState() : m_logoTexture(RESOURCES_PATH "media/logo.png"), m_playButtonTexture(RESOURCES_PATH "media/play_button.jpg") {
 	std::cout << "entering 'main menu' state" << std::endl;
 }
 
@@ -11,7 +11,8 @@ MainMenuState::~MainMenuState() {
 void MainMenuState::Enter() {
 	m_canvas.InitializeUIBuffers();
 	m_canvas.AddTextBox("AIM LABS", 300.0f, 500.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f), "TITLE");
-	m_canvas.AddUIBox(300.0f, 300.0f, 0.0f, 1.0f, 1.0f, "MM_PLAY_BUTTON");
+	m_canvas.AddUIBox(300.0f, 300.0f, 0.0f, 1.0f, 1.0f, "MM_PLAY_BUTTON", m_playButtonTexture);
+	m_canvas.AddUIBox(300.0f, 200.0f, 0.0f, 5.0f, 5.0f, "LOGO", m_logoTexture);
 	m_canvas.AddListener(&m_MMButtonManager);
 	m_cursor.Initialize();
 }

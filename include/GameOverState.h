@@ -25,4 +25,5 @@ private:
 	GOButtonManager m_GOButtonManager;
 	Cursor m_cursor;
 	RoundData::RoundStatistics m_stats;
+	Texture m_exitButtonTexture;
 };

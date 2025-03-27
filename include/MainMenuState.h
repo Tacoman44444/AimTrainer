@@ -24,4 +24,6 @@ private:
 	Canvas m_canvas;
 	MMButtonManager m_MMButtonManager;
 	Cursor m_cursor;
+	Texture m_logoTexture;
+	Texture m_playButtonTexture;
 };

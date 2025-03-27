@@ -2,6 +2,7 @@
 #include <glad/glad.h>
 #include <iostream>
 #include <openglErrorReporting.h>
+#include "CurlManager.h"
 #include "SetupHelper.h"
 #include "StateManager.h"
 #include "LTimer.h"
@@ -27,6 +28,7 @@ void resize_gl_viewport(const SDL_Event& event) {
 
 int main(int argc, char *argv[])
 {
+	CurlManager curlInit;
 
 	if (!SetupHelper::InitializeSDL()) {
 		std::cout << "SDL initialization failed" << std::endl;

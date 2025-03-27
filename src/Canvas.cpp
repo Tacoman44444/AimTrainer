@@ -13,8 +13,8 @@ void Canvas::AddTextBox(std::string text, float x, float y, float scale, glm::ve
 	m_textObjectsMap.insert(std::pair(id, std::move(textBox)));
 }
 
-void Canvas::AddUIBox(float x, float y, float rotation, float scaleX, float scaleY, std::string id) {
-	std::unique_ptr<UI> uiBox = std::make_unique<UI>(x, y, rotation, scaleX, scaleY, m_uiShader, m_ui_vaoID, TEMP_TEXTURE);
+void Canvas::AddUIBox(float x, float y, float rotation, float scaleX, float scaleY, std::string id, Texture texture) {
+	std::unique_ptr<UI> uiBox = std::make_unique<UI>(x, y, rotation, scaleX, scaleY, m_uiShader, m_ui_vaoID, texture);
 	m_uiObjectsMap.insert(std::pair(id, std::move(uiBox)));
 }
 

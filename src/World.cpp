@@ -58,7 +58,7 @@ void World::HandleInput(SDL_Event& e) {
 		if (!pressedDown) {
 			for (Target* target : targets) {
 				if (target->OnMouseClick(camera->GetPosition(), camera->GetLookDirection())) {
-					targetShotEvent.Notify(TARGET_SHOT);
+					targetShotEvent.Notify(Event {TARGET_SHOT, target->getTargetPosition_vec3()});
 					targets.push_back(target->clone());
 					target->destroy();
 					targetHit = true;
@@ -66,7 +66,7 @@ void World::HandleInput(SDL_Event& e) {
 				}
 			}
 			if (!targetHit) {
-				targetShotEvent.Notify(TARGETS_MISSED);
+				targetShotEvent.Notify(Event {TARGETS_MISSED, vec3(0, 0, 0)});
 			}
 		}
 		pressedDown = true;

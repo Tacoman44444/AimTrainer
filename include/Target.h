@@ -20,6 +20,7 @@ public:
 	Target* clone();
 	void destroy();
 	glm::vec3 getTargetPosition();
+	vec3 getTargetPosition_vec3();
 
 private:
 

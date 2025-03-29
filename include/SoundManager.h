@@ -10,7 +10,7 @@ class SoundManager : public Observer {
 public:
 	SoundManager();
 	bool InitializeSounds();
-	void OnNotify(Event event) override;
+	void OnNotify(const Event& event) override;
 
 private:
 	bool InitializeSound(const char* filePath, std::string id);

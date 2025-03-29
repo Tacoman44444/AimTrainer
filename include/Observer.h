@@ -1,14 +1,20 @@
 #pragma once
+#include "vec3.h"
 
-enum Event {
+enum EventType {
 	TARGET_SHOT,
 	TARGETS_MISSED,
+};
+
+struct Event {
+	EventType type;
+	vec3 targetPosition;
 };
 
 class Observer {
 public:
 	virtual ~Observer() {};
-	virtual void OnNotify(Event event) = 0;
+	virtual void OnNotify(const Event& event) = 0;
 
 private:
 

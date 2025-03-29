@@ -54,3 +54,7 @@ void Target::destroy() {
 glm::vec3 Target::getTargetPosition() {
     return mPosition;
 }
+
+vec3 Target::getTargetPosition_vec3() {
+    return vec3(mPosition.x, mPosition.y, mPosition.z);
+}

@@ -15,6 +15,7 @@ void PlayState::Enter() {
 	world->TargetShot().AddObserver(&soundManager);
 	canvas.AddTextBox("--", 50.0f, 550.0f, 0.9f, glm::vec3(0.3f, 0.5f, 0.1f), "TIMER");
 	canvas.AddTextBox("0", 50.0f, 510.0f, 0.9f, glm::vec3(0.3f, 0.5f, 0.1f), "SCORE");
+	canvas.AddTextBox("-", 50.0f, 470.0f, 0.9f, glm::vec3(0.3f, 0.5f, 0.1f), "ACCURACY");
 }
 
 GameState* PlayState::HandleInput(SDL_Event& e) {
@@ -39,6 +40,7 @@ void PlayState::Update() {
 		world->Update();
 		canvas.UpdateTextString(std::to_string((PLAY_TIME + COUNTDOWN_TIMER + startTime - SDL_GetTicks()) / 1000), "TIMER");
 		canvas.UpdateTextString(std::to_string(scoreManager.GetScore()), "SCORE");
+		canvas.UpdateTextString(std::to_string(scoreManager.GetAccuracy()), "ACCURACY");
 	}
 	else {
 		canvas.UpdateTextString(std::to_string((COUNTDOWN_TIMER + startTime - SDL_GetTicks()) / 1000), "TIMER");

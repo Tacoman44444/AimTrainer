@@ -11,8 +11,8 @@ bool SoundManager::InitializeSounds() {
 	return true;
 }
 
-void SoundManager::OnNotify(Event event) {
-	switch (event) {
+void SoundManager::OnNotify(const Event& event) {
+	switch (event.type) {
 	case TARGET_SHOT:
 		Mix_PlayChannel(-1, m_soundChunkMap["GUNSHOT"], 0);
 		break;

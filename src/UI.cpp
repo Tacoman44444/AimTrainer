@@ -4,7 +4,7 @@ UI::UI(float x, float y, float rotation, float scaleX, float scaleY, Shader& sha
 	//be sure to cast mousepos to float
 	m_shader(shader),
 	m_texture(texturePtr),
-	m_collider(-0.5f * scaleX * 100 + x, -0.5f * scaleY * 100 + y, 0.5f * scaleX * 100 + x, 0.5f * scaleY * 100 + y){
+	m_collider(x, 600 - (y + (scaleY * 100)), x + (scaleX * 100), 600 - y) {
 	this->x = x;
 	this->y = y;
 	this->rotation = rotation;
@@ -23,7 +23,7 @@ void UI::Render() {
 	m_texture.BindTexture();
 	m_shader.use();
 	m_shader.setInt("tex", 0);
-	glm::mat4 p = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
+	glm::mat4 p = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f, -1.0f, 1.0f);
 	glm::mat4 m = glm::mat4(1.0f);
 	m = glm::translate(m, glm::vec3(x, y, 0.0f));
 	m = glm::scale(m, glm::vec3(scaleX * 100, scaleY * 100, 1.0f));

@@ -57,14 +57,15 @@ namespace Models {
 	};
 
 	inline float ui_vertices[] = {
-		// X, Y, Z, U, V
-		0.5f,  0.5f, 0.0f,  1.0f, 1.0f,  // Top-right
-		0.5f, -0.5f, 0.0f,  1.0f, 0.0f,  // Bottom-right
-	   -0.5f, -0.5f, 0.0f,  0.0f, 0.0f,  // Bottom-left
+		// X, Y, U, V
+		// pos      // tex
+		0.0f, 1.0f, 0.0f, 1.0f,
+		1.0f, 0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 0.0f, 0.0f,
 
-	   -0.5f, -0.5f, 0.0f,  0.0f, 0.0f,  // Bottom-left (repeated)
-	   -0.5f,  0.5f, 0.0f,  0.0f, 1.0f,  // Top-left
-		0.5f,  0.5f, 0.0f,  1.0f, 1.0f   // Top-right (repeated)
+		0.0f, 1.0f, 0.0f, 1.0f,
+		1.0f, 1.0f, 1.0f, 1.0f,
+		1.0f, 0.0f, 1.0f, 0.0f
 	};
 
 

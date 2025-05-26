@@ -10,13 +10,14 @@
 #include "Target.h"
 #include "Subject.h"
 #include "Crosshair.h"
-
+#include "GameObject.h"
+#include "AssetManager.h"
 class World {
 
 public:
 	World();
 	World(std::vector<Transform*>& env);
-	World(std::vector<Transform*> env, std::vector<Target*> targetsList);
+	//World(std::vector<Transform*> env, std::vector<Target*> targetsList);
 	~World();
 
 	void Initialize();
@@ -25,20 +26,12 @@ public:
 	void Update();
 	void Render();
 
-	Subject& TargetShot();
-
 private:
 	bool pressedDown;
 
-	std::vector<Transform*> environment;
-	std::vector<Target*> targets;
-	Object* bufferTemplate;
 	Camera* camera;
-	Texture* envTexture;
-	Texture* targetTexture;
-	Subject targetShotEvent;
 	Crosshair crosshair;
 
-	void InitializeTargets();
-	void InitializeEnvironment();
+	std::vector<GameObject> m_gameObjects;
+
 };

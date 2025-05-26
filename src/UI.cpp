@@ -1,6 +1,6 @@
 #include "UI.h"
 
-UI::UI(float x, float y, float rotation, float scaleX, float scaleY, Shader& shader, GLuint vaoID, Texture& texturePtr) : 
+UI::UI(float x, float y, float rotation, float scaleX, float scaleY, Shader& shader, GLuint vaoID, Tex& texturePtr) : 
 	//be sure to cast mousepos to float
 	m_shader(shader),
 	m_texture(texturePtr),

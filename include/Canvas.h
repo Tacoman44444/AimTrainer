@@ -13,7 +13,7 @@ class Canvas {
 public:
 	Canvas();
 	void AddTextBox(std::string text, float x, float y, float scale, glm::vec3 colour, std::string id);
-	void AddUIBox(float x, float y, float rotation, float scaleX, float scaleY, std::string id, Texture texture);
+	void AddUIBox(float x, float y, float rotation, float scaleX, float scaleY, std::string id, Tex texture);
 	void UpdateTextString(std::string text, std::string id);
 
 	void HandleInput(SDL_Event& e);
@@ -34,7 +34,7 @@ private:
 	Shader m_textShader;
 	Shader m_uiShader;
 
-	Texture TEMP_TEXTURE;
+	Tex TEMP_TEXTURE;
 
 	GLuint m_ui_vaoID;
 	GLuint m_ui_vboID;

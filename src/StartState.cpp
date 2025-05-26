@@ -1,6 +1,7 @@
 #include "StartState.h"
 
-StartState::StartState() {
+StartState::StartState(AccountData::AccountData accountData) {
+	this->accountData = accountData;
 	world = std::make_unique<World>();
 	std::cout << "entering STARTSTATE" << std::endl;
 }
@@ -17,7 +18,7 @@ void StartState::Enter() {
 GameState* StartState::HandleInput(SDL_Event& e) {
 	if (e.type == SDL_MOUSEBUTTONDOWN) {
 		std::cout << "returned new PLAYSTATE" << std::endl;
-		return new PlayState(std::move(world));
+		return new PlayState(std::move(world), accountData);
 	}
 	return nullptr;
 }

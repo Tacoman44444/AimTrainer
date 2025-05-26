@@ -10,7 +10,7 @@
 class StartState : public GameState {
 public:
 
-	StartState();
+	StartState(AccountData::AccountData accountData);
 	~StartState();
 	void Enter() override;
 	GameState* HandleInput(SDL_Event& e) override;
@@ -21,6 +21,7 @@ public:
 
 private:
 
+	AccountData::AccountData accountData;
 	std::unique_ptr<World> world;
 	Canvas m_canvas;
 

@@ -7,13 +7,13 @@
 
 class UI {
 public:
-	UI(float x, float y, float rotation, float scaleX, float scaleY, Shader& shader, GLuint vaoID, Texture& texture);
+	UI(float x, float y, float rotation, float scaleX, float scaleY, Shader& shader, GLuint vaoID, Tex& texture);
 	bool CheckCollision(float mousePosX, float mousePosY);
 	void Render();
 private:
 	Shader m_shader;
 	GLuint m_vaoID;
-	Texture m_texture;
+	Tex m_texture;
 	BoxCollider2D m_collider;
 	float x;
 	float y;

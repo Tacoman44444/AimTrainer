@@ -1,6 +1,7 @@
 #include "PlayState.h"
 
-PlayState::PlayState(std::unique_ptr<World> gameWorld) : world(std::move(gameWorld)) {
+PlayState::PlayState(std::unique_ptr<World> gameWorld, AccountData::AccountData accountData) : world(std::move(gameWorld)) {
+	this->accountData = accountData;
 	std::cout << "entering PLAYSTATE" << std::endl;
 }
 
@@ -11,8 +12,6 @@ PlayState::~PlayState() {
 void PlayState::Enter() {
 	startTime = SDL_GetTicks();
 	soundManager.InitializeSounds();
-	world->TargetShot().AddObserver(&scoreManager);
-	world->TargetShot().AddObserver(&soundManager);
 	canvas.AddTextBox("--", 50.0f, 550.0f, 0.9f, glm::vec3(0.3f, 0.5f, 0.1f), "TIMER");
 	canvas.AddTextBox("0", 50.0f, 510.0f, 0.9f, glm::vec3(0.3f, 0.5f, 0.1f), "SCORE");
 	canvas.AddTextBox("-", 50.0f, 470.0f, 0.9f, glm::vec3(0.3f, 0.5f, 0.1f), "ACCURACY");
@@ -28,9 +27,8 @@ GameState* PlayState::HandleInput(SDL_Event& e) {
 
 GameState* PlayState::ChangeState() {
 	if (SDL_GetTicks() - startTime > COUNTDOWN_TIMER + PLAY_TIME) {
-		//add a rounddata struct
-		RoundData::RoundStatistics stats = { scoreManager.GetScore(), scoreManager.GetMissed()};
-		return new GameOverState(stats);
+		RoundData::RoundStatistics stats = { scoreManager.GetScore(), scoreManager.GetAccuracy()};
+		return new GameOverState(stats, accountData);
 	}
 	return nullptr;
 }
@@ -48,6 +46,8 @@ void PlayState::Update() {
 }
 
 void PlayState::Render() {
+	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	world->Render();
 	canvas.Render();
 	// render UI shit also

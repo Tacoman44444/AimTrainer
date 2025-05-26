@@ -2,6 +2,7 @@
 
 #include "Transform.h"
 #include <vector>
+#include <string>
 
 namespace Models {
 	inline float vertices[] = {	//cube
@@ -74,11 +75,17 @@ namespace Models {
 namespace RoundData {
 	struct RoundStatistics {
 		int m_score;
-		int m_misses;
+		float m_accuracy;
 
 		RoundStatistics();
-		RoundStatistics(int score, int misses);
+		RoundStatistics(int score, float accuracy);
 	};
 
-	float Accuracy(RoundStatistics stats);
+}
+
+namespace AccountData {
+	struct AccountData {
+		std::string m_username;
+		std::string m_password;
+	};
 }

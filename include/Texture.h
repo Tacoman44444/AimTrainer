@@ -4,10 +4,17 @@
 #include <iostream>
 #include "stb_image.h"
 
+struct Texture {
+	GLuint m_textureID;
+	GLuint m_width;
+	GLuint m_height;
 
-class Texture {
+	void Load(const char* filePath);
+};
+
+class Tex {
 public:
-	Texture(const char* texturePath);
+	Tex(const char* texturePath);
 	void BindTexture();
 
 private:

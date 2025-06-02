@@ -16,7 +16,7 @@ void MainMenuState::Enter() {
 	m_canvas.AddListener(&m_MMButtonManager);
 	m_cursor.Initialize();
 
-	AssetManager::AddModel("sphere_default", std::make_shared<Model>(PRIMITIVE_SPHERE, 1.0f));
+	AssetManager::AddModel("sphere_default", std::make_shared<Model>(PRIMITIVE_SPHERE, 0.5f));
 	AssetManager::AddShader("shader_default_unlit", std::make_shared<Shader>(RESOURCES_PATH "shaders/sphere_vert_shader.vert", RESOURCES_PATH "shaders/sphere_frag_shader.frag"));
 }
 
@@ -30,7 +30,6 @@ GameState* MainMenuState::HandleInput(SDL_Event& e) {
 	}
 
 	
-
 	if (!enteringUsername && !enteringPassword) {
 		m_canvas.HandleInput(e);
 		if (m_MMButtonManager.ClickedPlay) {

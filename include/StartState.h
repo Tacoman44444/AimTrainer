@@ -3,6 +3,7 @@
 #include "GameState.h"
 #include "PlayState.h"
 #include "World.h"
+#include "GameObject.h"
 #include <SDL2/SDL.h>
 #include <memory>
 #include "Canvas.h"

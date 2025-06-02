@@ -12,11 +12,14 @@
 #include "Crosshair.h"
 #include "GameObject.h"
 #include "AssetManager.h"
+#include "TargetPool.h"
+#include "GridShot.h"
+
 class World {
 
 public:
 	World();
-	World(std::vector<Transform*>& env);
+	//World(std::vector<Transform*>& env);
 	//World(std::vector<Transform*> env, std::vector<Target*> targetsList);
 	~World();
 
@@ -32,6 +35,6 @@ private:
 	Camera* camera;
 	Crosshair crosshair;
 
-	std::vector<GameObject> m_gameObjects;
-
+	std::vector<GameObject*> m_gameObjects;
+	GridShot gridShot; // later will change this to support any gamemode.
 };

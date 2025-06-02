@@ -26,7 +26,7 @@ GameState* StartState::HandleInput(SDL_Event& e) {
 GameState* StartState::ChangeState() { return nullptr; }
 
 void StartState::Update() {
-
+	
 }
 
 void StartState::Render() {
@@ -40,3 +40,6 @@ void StartState::Render() {
 bool StartState::QuitGame() {
 	return false;
 }
+
+
+
